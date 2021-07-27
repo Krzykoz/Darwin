@@ -1,0 +1,290 @@
+\hypertarget{_darwin_8cpp}{}\doxysection{C\+:/\+Users/\+Krzykoz/source/repos/\+Darwin/\+Darwin/\+Darwin.cpp File Reference}
+\label{_darwin_8cpp}\index{C:/Users/Krzykoz/source/repos/Darwin/Darwin/Darwin.cpp@{C:/Users/Krzykoz/source/repos/Darwin/Darwin/Darwin.cpp}}
+
+
+Program symulujący ewolucje populacji osobników.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_darwin_8cpp_ac69d84e305588afa7fc4808b4078a0e1}{Q\+U\+I\+C\+K\+\_\+\+R\+A\+ND}}(m,  n)~m + ( std\+::rand() \% ( (n) -\/ (m) + 1 ) )
+\item 
+\#define \mbox{\hyperlink{_darwin_8cpp_a8ff051838d9790892122707adbd43bad}{D\+N\+A\+\_\+\+C\+O\+L\+OR}}~(((vect\mbox{[}osobnik\mbox{]}\mbox{[}0\mbox{]}) \% 11) + ((vect\mbox{[}osobnik\mbox{]}\mbox{[}(unsigned(vect\mbox{[}osobnik\mbox{]}.size()) -\/ 1)\mbox{]})) \% 11)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_darwin_8cpp_a23b537b473e0594a62a077362ef65c36}{arg\+Info}} (char $\ast$$\ast$argv, int \&argc, string \&in\+File\+Path, string \&out\+File\+Path, double \&w, double \&r, int \&p, int \&k)
+\item 
+int \mbox{\hyperlink{_darwin_8cpp_a338655b61c0aee112a801b98a4d48041}{arg\+Check}} (string \&in\+File\+Path, string \&out\+File\+Path, double \&w, double \&r, int \&p, int \&k)
+\item 
+int \mbox{\hyperlink{_darwin_8cpp_a3b7393b383baa4f96890f86e8ed66b44}{file\+Read}} (vector$<$ vector$<$ int $>$ $>$ \&vect, string \&file\+Path)
+\item 
+void \mbox{\hyperlink{_darwin_8cpp_a02d7bd9e6d42b8b5cf7beb4820c4f7fc}{file\+Write}} (vector$<$ vector$<$ int $>$ $>$ \&vect, string \&file\+Path)
+\item 
+void \mbox{\hyperlink{_darwin_8cpp_afbdca3b7890f514439b5ea28c0bce0a0}{genome\+Print}} (vector$<$ vector$<$ int $>$ $>$ \&vect, int osobnik)
+\item 
+void \mbox{\hyperlink{_darwin_8cpp_a73298ea4bf76ae09abfa4bd8e108c0f0}{pop\+Print}} (vector$<$ vector$<$ int $>$ $>$ \&vect)
+\item 
+void \mbox{\hyperlink{_darwin_8cpp_ae0b172bb2c3d531f43d556bc8a12f784}{child\+Mix}} (vector$<$ vector$<$ int $>$ $>$ \&vect, vector$<$ int $>$ \&tmp, int parent1, int parent2, int parent1\+Break, int parent2\+Break, int pop\+Count)
+\item 
+void \mbox{\hyperlink{_darwin_8cpp_a71f999f01c2635e5a914ba964c591d62}{mixing}} (vector$<$ vector$<$ int $>$ $>$ \&vect, int k)
+\item 
+void \mbox{\hyperlink{_darwin_8cpp_ace1e45179000c97912304d8751396dfa}{fittnes}} (vector$<$ vector$<$ int $>$ $>$ \&vect, vector$<$ int $>$ \&clone, double w, double r)
+\item 
+int \mbox{\hyperlink{_darwin_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_darwin_8cpp_a61936d0f36612c377d764d60e42577ea}\label{_darwin_8cpp_a61936d0f36612c377d764d60e42577ea}} 
+vector$<$ vector$<$ int $>$ $>$ {\bfseries population}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Program symulujący ewolucje populacji osobników. 
+
+\begin{DoxyAuthor}{Author}
+Krzysztof Koźlik 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+November 2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_darwin_8cpp_a8ff051838d9790892122707adbd43bad}\label{_darwin_8cpp_a8ff051838d9790892122707adbd43bad}} 
+\index{Darwin.cpp@{Darwin.cpp}!DNA\_COLOR@{DNA\_COLOR}}
+\index{DNA\_COLOR@{DNA\_COLOR}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{DNA\_COLOR}{DNA\_COLOR}}
+{\footnotesize\ttfamily \#define D\+N\+A\+\_\+\+C\+O\+L\+OR~(((vect\mbox{[}osobnik\mbox{]}\mbox{[}0\mbox{]}) \% 11) + ((vect\mbox{[}osobnik\mbox{]}\mbox{[}(unsigned(vect\mbox{[}osobnik\mbox{]}.size()) -\/ 1)\mbox{]})) \% 11)}
+
+Wzór na kod koloru osbonika wylicznany z jego chromosomu. 
+\begin{DoxyParams}{Parameters}
+{\em vect\mbox{[}osobnik\mbox{]}\mbox{[}0\mbox{]}} & Pierwsza liczba naturalna z chromosomu \\
+\hline
+{\em (vect\mbox{[}osobnik\mbox{]}.\+size()} & -\/ 1) Ostatnia liczba naturalna z chromosomu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_darwin_8cpp_ac69d84e305588afa7fc4808b4078a0e1}\label{_darwin_8cpp_ac69d84e305588afa7fc4808b4078a0e1}} 
+\index{Darwin.cpp@{Darwin.cpp}!QUICK\_RAND@{QUICK\_RAND}}
+\index{QUICK\_RAND@{QUICK\_RAND}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{QUICK\_RAND}{QUICK\_RAND}}
+{\footnotesize\ttfamily \#define Q\+U\+I\+C\+K\+\_\+\+R\+A\+ND(\begin{DoxyParamCaption}\item[{}]{m,  }\item[{}]{n }\end{DoxyParamCaption})~m + ( std\+::rand() \% ( (n) -\/ (m) + 1 ) )}
+
+Dyrektywa zwracająca liczbę pseudolosową w przedziale od m do n. 
+\begin{DoxyParams}{Parameters}
+{\em m} & Minimalna wartość liczby losowej \\
+\hline
+{\em m} & Maksymalna wartość liczby losowej \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_darwin_8cpp_a338655b61c0aee112a801b98a4d48041}\label{_darwin_8cpp_a338655b61c0aee112a801b98a4d48041}} 
+\index{Darwin.cpp@{Darwin.cpp}!argCheck@{argCheck}}
+\index{argCheck@{argCheck}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{argCheck()}{argCheck()}}
+{\footnotesize\ttfamily int arg\+Check (\begin{DoxyParamCaption}\item[{string \&}]{in\+File\+Path,  }\item[{string \&}]{out\+File\+Path,  }\item[{double \&}]{w,  }\item[{double \&}]{r,  }\item[{int \&}]{p,  }\item[{int \&}]{k }\end{DoxyParamCaption})}
+
+Funkcja sprawdza poprawność argumentów wejśćiowych.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+File\+Path} & Ścierzka pliku wejściowego \\
+\hline
+{\em out\+File\+Path} & Ścierzka pliku wyjściowego \\
+\hline
+{\em w} & Współczynnik Wymierania \\
+\hline
+{\em r} & Współczynnik Rozmnażania \\
+\hline
+{\em p} & Ilość Pokoleń \\
+\hline
+{\em k} & Ilość par wylosowanych do krzyżowania \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zwraca 0 jeśli wszystkie argumenty są prawidłowe w przeciwnym razie zwraca 2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_darwin_8cpp_a23b537b473e0594a62a077362ef65c36}\label{_darwin_8cpp_a23b537b473e0594a62a077362ef65c36}} 
+\index{Darwin.cpp@{Darwin.cpp}!argInfo@{argInfo}}
+\index{argInfo@{argInfo}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{argInfo()}{argInfo()}}
+{\footnotesize\ttfamily int arg\+Info (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{argv,  }\item[{int \&}]{argc,  }\item[{string \&}]{in\+File\+Path,  }\item[{string \&}]{out\+File\+Path,  }\item[{double \&}]{w,  }\item[{double \&}]{r,  }\item[{int \&}]{p,  }\item[{int \&}]{k }\end{DoxyParamCaption})}
+
+Funkcja wyświetla informacje i wczytuje argumenty wejściowe.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & Tablica z argumentami wprowadzonymi do programu \\
+\hline
+{\em argc} & Ilość argumentów wprowadzonych do programu \\
+\hline
+{\em in\+File\+Path} & Ścierzka pliku wejściowego \\
+\hline
+{\em out\+File\+Path} & Ścierzka pliku wyjściowego \\
+\hline
+{\em w} & Współczynnik Wymierania \\
+\hline
+{\em r} & Współczynnik Rozmnażania \\
+\hline
+{\em p} & Ilość Pokoleń \\
+\hline
+{\em k} & Ilość par wylosowanych do krzyżowania \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zwraca 0 jeśli ilość argumentów jest równa 13 w przeciwnym razie zwraca 1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_darwin_8cpp_ae0b172bb2c3d531f43d556bc8a12f784}\label{_darwin_8cpp_ae0b172bb2c3d531f43d556bc8a12f784}} 
+\index{Darwin.cpp@{Darwin.cpp}!childMix@{childMix}}
+\index{childMix@{childMix}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{childMix()}{childMix()}}
+{\footnotesize\ttfamily void child\+Mix (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{vect,  }\item[{vector$<$ int $>$ \&}]{tmp,  }\item[{int}]{parent1,  }\item[{int}]{parent2,  }\item[{int}]{parent1\+Break,  }\item[{int}]{parent2\+Break,  }\item[{int}]{pop\+Count }\end{DoxyParamCaption})}
+
+Funkcja tworząca chromosom nowego osobnika.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Dwuwymiarowy vector z populacją \\
+\hline
+{\em tmp} & Tymczasowy vector do przechowywania chromosomu nowego osobnika powstałego z krzyżowania \\
+\hline
+{\em parent1} & id 1 osobnika wylosowanego do krzyżowania \\
+\hline
+{\em parent2} & id 2 osobnika wylosowanego do krzyżowania \\
+\hline
+{\em parent1\+Break} & Punkt pęknięcia chromosmu 1 osobnika wylosowanego do krzyżowania \\
+\hline
+{\em parent2\+Break} & Punkt pęknięcia chromosmu 2 osobnika wylosowanego do krzyżowania \\
+\hline
+{\em pop\+Count} & Ilość osobników w populacji \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_darwin_8cpp_a3b7393b383baa4f96890f86e8ed66b44}\label{_darwin_8cpp_a3b7393b383baa4f96890f86e8ed66b44}} 
+\index{Darwin.cpp@{Darwin.cpp}!fileRead@{fileRead}}
+\index{fileRead@{fileRead}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{fileRead()}{fileRead()}}
+{\footnotesize\ttfamily int file\+Read (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{vect,  }\item[{string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+Funcja wczytuje i weryfikuje dane z pliku wejśćiowego.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Dwuwymiarowy vector z populacją \\
+\hline
+{\em file\+Path} & ścieżka pliku wejściowego \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zwraca 0 jeśli plik zostanie prawdłowo wczytany ,jeśli nie udało otworzyć pliku lub są w nim błędne dane zwróci wartość 1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_darwin_8cpp_a02d7bd9e6d42b8b5cf7beb4820c4f7fc}\label{_darwin_8cpp_a02d7bd9e6d42b8b5cf7beb4820c4f7fc}} 
+\index{Darwin.cpp@{Darwin.cpp}!fileWrite@{fileWrite}}
+\index{fileWrite@{fileWrite}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{fileWrite()}{fileWrite()}}
+{\footnotesize\ttfamily void file\+Write (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{vect,  }\item[{string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+Funkcja zapisuje populacje w pliku wyjściowym.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Dwuwymiarowy vector z populacją \\
+\hline
+{\em file\+Path} & ścieżka pliku wyjściowego \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_darwin_8cpp_ace1e45179000c97912304d8751396dfa}\label{_darwin_8cpp_ace1e45179000c97912304d8751396dfa}} 
+\index{Darwin.cpp@{Darwin.cpp}!fittnes@{fittnes}}
+\index{fittnes@{fittnes}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{fittnes()}{fittnes()}}
+{\footnotesize\ttfamily void fittnes (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{vect,  }\item[{vector$<$ int $>$ \&}]{clone,  }\item[{double}]{w,  }\item[{double}]{r }\end{DoxyParamCaption})}
+
+Funkcja ustala wartość funkcji dopasowania dla każdego osobnika po czym usuwa lub klonuje go w zależnośći od współczynników Wymierania i Rozmnażania.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Dwuwymiarowy vector z populacją \\
+\hline
+{\em clone} & Vector z osobnikami do sklonowania \\
+\hline
+{\em w} & Współczynnik Wymierania \\
+\hline
+{\em r} & Współczynnik Rozmnażania \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_darwin_8cpp_afbdca3b7890f514439b5ea28c0bce0a0}\label{_darwin_8cpp_afbdca3b7890f514439b5ea28c0bce0a0}} 
+\index{Darwin.cpp@{Darwin.cpp}!genomePrint@{genomePrint}}
+\index{genomePrint@{genomePrint}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{genomePrint()}{genomePrint()}}
+{\footnotesize\ttfamily void genome\+Print (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{vect,  }\item[{int}]{osobnik }\end{DoxyParamCaption})}
+
+Funkcja wyświetla chromosom danego osobnika z populacji.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Dwuwymiarowy vector z populacją \\
+\hline
+{\em osobnik} & id wyświetlanego osobnika z populacji \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_darwin_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{_darwin_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{Darwin.cpp@{Darwin.cpp}!main@{main}}
+\index{main@{main}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Funcja główna wywołują inne funkcje.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Ilość argumentów wprowadzonych do programu \\
+\hline
+{\em argv} & Tablica z argumentami wprowadzonymi do programu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zwraca 0 jeśli jeśli wszystkie funkcje zostały poprawinie wykonane, w przeciwnym razie zwraca 1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_darwin_8cpp_a71f999f01c2635e5a914ba964c591d62}\label{_darwin_8cpp_a71f999f01c2635e5a914ba964c591d62}} 
+\index{Darwin.cpp@{Darwin.cpp}!mixing@{mixing}}
+\index{mixing@{mixing}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{mixing()}{mixing()}}
+{\footnotesize\ttfamily void mixing (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{vect,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+Funckja wybierająca 2 osobników do krzyżowania i tworząca nowego osobnika z ich chromosomu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Dwuwymiarowy vector z populacją \\
+\hline
+{\em k} & Ilość par wylosownaych do krzyżowania \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_darwin_8cpp_a73298ea4bf76ae09abfa4bd8e108c0f0}\label{_darwin_8cpp_a73298ea4bf76ae09abfa4bd8e108c0f0}} 
+\index{Darwin.cpp@{Darwin.cpp}!popPrint@{popPrint}}
+\index{popPrint@{popPrint}!Darwin.cpp@{Darwin.cpp}}
+\doxysubsubsection{\texorpdfstring{popPrint()}{popPrint()}}
+{\footnotesize\ttfamily void pop\+Print (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{vect }\end{DoxyParamCaption})}
+
+Funkcja wyświetla populacje do konsoli.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & Dwuwymiarowy vector z populacją \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{_darwin_8cpp_afbdca3b7890f514439b5ea28c0bce0a0}{genome\+Print(vector$<$ vector$<$int$>$ $>$\& vect, int osobnik)}} Funkcja wyświetla chromosom danego osobnika z populacji 
+\end{DoxySeeAlso}
